@@ -1,0 +1,201 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        Hero hero = new Hero("Student", 100, 20);
+        Villain villain = new Villain("Mr. Turner!", 80, 15);
+
+        System.out.println("Welcome to the epic battle of " + hero.getName() + " vs. " + villain.getName() + "!");
+
+        while (hero.isAlive() && villain.isAlive()) {
+            System.out.println("\nChoose an action for " + hero.getName() + ":");
+            System.out.println("1. Attack");
+            System.out.println("2. Heal");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            if (choice == 1) {
+                hero.attack(villain);
+            } else if (choice == 2) {
+                hero.heal();
+            } else {
+                System.out.println("Invalid choice. " + hero.getName() + " hesitates.");
+            }
+
+            if (villain.isAlive()) {
+                villain.attack(hero);
+            }
+
+            System.out.println("\nBattle Status:");
+            System.out.println(hero.getStatus());
+            System.out.println(villain.getStatus());
+        }
+
+        if (hero.isAlive()) {
+            System.out.println("\n" + hero.getName() + " has defeated " + villain.getName() + "! Victory!");
+        } else {
+            System.out.println("\n" + villain.getName() + " has defeated " + hero.getName() + ". Game Over.");
+        }
+
+        System.out.println("\nGame Over. Restarting in:");
+        for (int i = 5; i > 0; i--) {
+            System.out.println(i);
+        }
+
+        System.out.println("Restart the game to play again!");
+        scanner.close();
+    }
+}
+
+/**
+ * a Hero character in the battle.
+ */
+class Hero {
+    private String name;
+    private int health;
+    private int attackPower;
+
+    /** Creates a Hero object
+     * @param name takes a string for the hero's name
+     * @param health takes an int for initial health
+     * @param attackPower takes an int for initial attack power
+     */
+    public Hero(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+    }
+
+    /**
+     * returns the name of the hero
+     * @return name of hero
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * returns attack power
+     * @return attack power of hero
+     */
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    /** Checks if the hero is still alive
+     *
+     * @return true if health > 0 and false if health < 0
+     */
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    /** Hero attacks the villain
+     * void, so no return value
+     * @param villain
+     */
+    public void attack(Villain villain) {
+        System.out.println(name + " attacks " + villain.getName() + " for " + attackPower + " damage!");
+        villain.takeDamage(attackPower);
+    }
+
+    /** Hero heals itself
+     * void, no return
+     */
+    public void heal() {
+        int healAmount = 15;
+        health += healAmount;
+        System.out.println(name + " heals for " + healAmount + " health!");
+    }
+
+    /** Hero takes damage
+     * void, no return
+     * @param damage
+     */
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " takes " + damage + " damage!");
+    }
+
+    /** Returns the hero's current status
+     *
+     * @return name of character + " - Health: " + health of the character
+     */
+    public String getStatus() {
+        return name + " - Health: " + health;
+    }
+}
+
+/**
+ * a Villain character in the battle.
+ */
+class Villain {
+    private String name;
+    private int health;
+    private int attackPower;
+
+    /** Creates a Villain with a name, health, and attack power
+     *
+     * @param name the name of the villain
+     * @param health the health of the villain
+     * @param attackPower the attack power of the villain
+     */
+    public Villain(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+    }
+
+    /** returns the name of the character
+     *
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /** returns the attack power of the character
+     *
+     * @return the attack power
+     */
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    /** checks if hero is alive
+     *
+     * @return true if health > 0 and false if health < 0
+     */
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    /** takes attack amount from hero
+     *
+     * @param hero takes hero
+     */
+    public void attack(Hero hero) {
+        System.out.println(name + " attacks " + hero.getName() + " for " + attackPower + " damage!");
+        hero.takeDamage(attackPower);
+    }
+
+    /** takes damage from attack and subtracts from health
+     *
+     * @param damage the damage from the attack
+     */
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " takes " + damage + " damage!");
+    }
+
+    /** Returns the villain's current status
+     *
+     * @return string of characters name and " - Health: " and the characters health
+     */
+    public String getStatus() {
+        return name + " - Health: " + health;
+    }
+}
