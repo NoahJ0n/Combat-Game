@@ -1,224 +1,203 @@
-<html>
-<head>
-<title>Main.java</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #cf8e6d;}
-.s1 { color: #bcbec4;}
-.s2 { color: #bcbec4;}
-.s3 { color: #6aab73;}
-.s4 { color: #2aacb8;}
-.s5 { color: #5f826b; font-style: italic;}
-.s6 { color: #67a37c; font-style: italic;}
-</style>
-</head>
-<body bgcolor="#1e1f22">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-Main.java</font>
-</center></td></tr></table>
-<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
 
-<span class="s0">public class </span><span class="s1">Main </span><span class="s2">{</span>
-    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
-        <span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+Main.java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
 
-        <span class="s1">Hero hero </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Hero</span><span class="s2">(</span><span class="s3">&quot;Student&quot;</span><span class="s2">, </span><span class="s4">100</span><span class="s2">, </span><span class="s4">20</span><span class="s2">);</span>
-        <span class="s1">Villain villain </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Villain</span><span class="s2">(</span><span class="s3">&quot;Mr. Turner!&quot;</span><span class="s2">, </span><span class="s4">80</span><span class="s2">, </span><span class="s4">15</span><span class="s2">);</span>
+        Hero hero = new Hero("Student", 100, 20);
+        Villain villain = new Villain("Mr. Turner!", 80, 15);
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Welcome to the epic battle of &quot; </span><span class="s2">+ </span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; vs. &quot; </span><span class="s2">+ </span><span class="s1">villain</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot;!&quot;</span><span class="s2">);</span>
+        System.out.println("Welcome to the epic battle of " + hero.getName() + " vs. " + villain.getName() + "!");
 
-        <span class="s0">while </span><span class="s2">(</span><span class="s1">hero</span><span class="s2">.</span><span class="s1">isAlive</span><span class="s2">() &amp;&amp; </span><span class="s1">villain</span><span class="s2">.</span><span class="s1">isAlive</span><span class="s2">()) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Choose an action for &quot; </span><span class="s2">+ </span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot;:&quot;</span><span class="s2">);</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;1. Attack&quot;</span><span class="s2">);</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;2. Heal&quot;</span><span class="s2">);</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Enter your choice: &quot;</span><span class="s2">);</span>
-            <span class="s0">int </span><span class="s1">choice </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+        while (hero.isAlive() && villain.isAlive()) {
+            System.out.println("\nChoose an action for " + hero.getName() + ":");
+            System.out.println("1. Attack");
+            System.out.println("2. Heal");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
 
-            <span class="s0">if </span><span class="s2">(</span><span class="s1">choice </span><span class="s2">== </span><span class="s4">1</span><span class="s2">) {</span>
-                <span class="s1">hero</span><span class="s2">.</span><span class="s1">attack</span><span class="s2">(</span><span class="s1">villain</span><span class="s2">);</span>
-            <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">choice </span><span class="s2">== </span><span class="s4">2</span><span class="s2">) {</span>
-                <span class="s1">hero</span><span class="s2">.</span><span class="s1">heal</span><span class="s2">();</span>
-            <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
-                <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Invalid choice. &quot; </span><span class="s2">+ </span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; hesitates.&quot;</span><span class="s2">);</span>
-            <span class="s2">}</span>
+            if (choice == 1) {
+                hero.attack(villain);
+            } else if (choice == 2) {
+                hero.heal();
+            } else {
+                System.out.println("Invalid choice. " + hero.getName() + " hesitates.");
+            }
 
-            <span class="s0">if </span><span class="s2">(</span><span class="s1">villain</span><span class="s2">.</span><span class="s1">isAlive</span><span class="s2">()) {</span>
-                <span class="s1">villain</span><span class="s2">.</span><span class="s1">attack</span><span class="s2">(</span><span class="s1">hero</span><span class="s2">);</span>
-            <span class="s2">}</span>
+            if (villain.isAlive()) {
+                villain.attack(hero);
+            }
 
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Battle Status:&quot;</span><span class="s2">);</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getStatus</span><span class="s2">());</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">villain</span><span class="s2">.</span><span class="s1">getStatus</span><span class="s2">());</span>
-        <span class="s2">}</span>
+            System.out.println("\nBattle Status:");
+            System.out.println(hero.getStatus());
+            System.out.println(villain.getStatus());
+        }
 
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">hero</span><span class="s2">.</span><span class="s1">isAlive</span><span class="s2">()) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">&quot; </span><span class="s2">+ </span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; has defeated &quot; </span><span class="s2">+ </span><span class="s1">villain</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot;! Victory!&quot;</span><span class="s2">);</span>
-        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">&quot; </span><span class="s2">+ </span><span class="s1">villain</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; has defeated &quot; </span><span class="s2">+ </span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot;. Game Over.&quot;</span><span class="s2">);</span>
-        <span class="s2">}</span>
+        if (hero.isAlive()) {
+            System.out.println("\n" + hero.getName() + " has defeated " + villain.getName() + "! Victory!");
+        } else {
+            System.out.println("\n" + villain.getName() + " has defeated " + hero.getName() + ". Game Over.");
+        }
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Game Over. Restarting in:&quot;</span><span class="s2">);</span>
-        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">5</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&gt; </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i</span><span class="s2">--) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">i</span><span class="s2">);</span>
-        <span class="s2">}</span>
+        System.out.println("\nGame Over. Restarting in:");
+        for (int i = 5; i > 0; i--) {
+            System.out.println(i);
+        }
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Restart the game to play again!&quot;</span><span class="s2">);</span>
-        <span class="s1">scanner</span><span class="s2">.</span><span class="s1">close</span><span class="s2">();</span>
-    <span class="s2">}</span>
-<span class="s2">}</span>
+        System.out.println("Restart the game to play again!");
+        scanner.close();
+    }
+}
 
-<span class="s5">/**</span>
- <span class="s5">* a Hero character in the battle.</span>
- <span class="s5">*/</span>
-<span class="s0">class </span><span class="s1">Hero </span><span class="s2">{</span>
-    <span class="s0">private </span><span class="s1">String name</span><span class="s2">;</span>
-    <span class="s0">private int </span><span class="s1">health</span><span class="s2">;</span>
-    <span class="s0">private int </span><span class="s1">attackPower</span><span class="s2">;</span>
+/**
+ * a Hero character in the battle.
+ */
+class Hero {
+    private String name;
+    private int health;
+    private int attackPower;
 
-    <span class="s5">/** Creates a Hero object</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">name takes a string for the hero's name</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">health takes an int for initial health</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">attackPower takes an int for initial attack power</span>
-     <span class="s5">*/</span>
-    <span class="s0">public </span><span class="s1">Hero</span><span class="s2">(</span><span class="s1">String name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">health</span><span class="s2">, </span><span class="s0">int </span><span class="s1">attackPower</span><span class="s2">) {</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">name </span><span class="s2">= </span><span class="s1">name</span><span class="s2">;</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">health </span><span class="s2">= </span><span class="s1">health</span><span class="s2">;</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">attackPower </span><span class="s2">= </span><span class="s1">attackPower</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /** Creates a Hero object
+     * @param name takes a string for the hero's name
+     * @param health takes an int for initial health
+     * @param attackPower takes an int for initial attack power
+     */
+    public Hero(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+    }
 
-    <span class="s5">/**</span>
-     <span class="s5">* returns the name of the hero</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">name of hero</span>
-     <span class="s5">*/</span>
-    <span class="s0">public </span><span class="s1">String getName</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">name</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /**
+     * returns the name of the hero
+     * @return name of hero
+     */
+    public String getName() {
+        return name;
+    }
 
-    <span class="s5">/**</span>
-     <span class="s5">* returns attack power</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">attack power of hero</span>
-     <span class="s5">*/</span>
-    <span class="s0">public int </span><span class="s1">getAttackPower</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">attackPower</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /**
+     * returns attack power
+     * @return attack power of hero
+     */
+    public int getAttackPower() {
+        return attackPower;
+    }
 
-    <span class="s5">/** Checks if the hero is still alive</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">true if health &gt; 0 and false if health &lt; 0</span>
-     <span class="s5">*/</span>
-    <span class="s0">public boolean </span><span class="s1">isAlive</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">health </span><span class="s2">&gt; </span><span class="s4">0</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /** Checks if the hero is still alive
+     *
+     * @return true if health > 0 and false if health < 0
+     */
+    public boolean isAlive() {
+        return health > 0;
+    }
 
-    <span class="s5">/** Hero attacks the villain</span>
-     <span class="s5">* void, so no return value</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">villain</span>
-     <span class="s5">*/</span>
-    <span class="s0">public void </span><span class="s1">attack</span><span class="s2">(</span><span class="s1">Villain villain</span><span class="s2">) {</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; attacks &quot; </span><span class="s2">+ </span><span class="s1">villain</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; for &quot; </span><span class="s2">+ </span><span class="s1">attackPower </span><span class="s2">+ </span><span class="s3">&quot; damage!&quot;</span><span class="s2">);</span>
-        <span class="s1">villain</span><span class="s2">.</span><span class="s1">takeDamage</span><span class="s2">(</span><span class="s1">attackPower</span><span class="s2">);</span>
-    <span class="s2">}</span>
+    /** Hero attacks the villain
+     * void, so no return value
+     * @param villain
+     */
+    public void attack(Villain villain) {
+        System.out.println(name + " attacks " + villain.getName() + " for " + attackPower + " damage!");
+        villain.takeDamage(attackPower);
+    }
 
-    <span class="s5">/** Hero heals itself</span>
-     <span class="s5">* void, no return</span>
-     <span class="s5">*/</span>
-    <span class="s0">public void </span><span class="s1">heal</span><span class="s2">() {</span>
-        <span class="s0">int </span><span class="s1">healAmount </span><span class="s2">= </span><span class="s4">15</span><span class="s2">;</span>
-        <span class="s1">health </span><span class="s2">+= </span><span class="s1">healAmount</span><span class="s2">;</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; heals for &quot; </span><span class="s2">+ </span><span class="s1">healAmount </span><span class="s2">+ </span><span class="s3">&quot; health!&quot;</span><span class="s2">);</span>
-    <span class="s2">}</span>
+    /** Hero heals itself
+     * void, no return
+     */
+    public void heal() {
+        int healAmount = 15;
+        health += healAmount;
+        System.out.println(name + " heals for " + healAmount + " health!");
+    }
 
-    <span class="s5">/** Hero takes damage</span>
-     <span class="s5">* void, no return</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">damage</span>
-     <span class="s5">*/</span>
-    <span class="s0">public void </span><span class="s1">takeDamage</span><span class="s2">(</span><span class="s0">int </span><span class="s1">damage</span><span class="s2">) {</span>
-        <span class="s1">health </span><span class="s2">-= </span><span class="s1">damage</span><span class="s2">;</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; takes &quot; </span><span class="s2">+ </span><span class="s1">damage </span><span class="s2">+ </span><span class="s3">&quot; damage!&quot;</span><span class="s2">);</span>
-    <span class="s2">}</span>
+    /** Hero takes damage
+     * void, no return
+     * @param damage
+     */
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " takes " + damage + " damage!");
+    }
 
-    <span class="s5">/** Returns the hero's current status</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">name of character + &quot; - Health: &quot; + health of the character</span>
-     <span class="s5">*/</span>
-    <span class="s0">public </span><span class="s1">String getStatus</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; - Health: &quot; </span><span class="s2">+ </span><span class="s1">health</span><span class="s2">;</span>
-    <span class="s2">}</span>
-<span class="s2">}</span>
+    /** Returns the hero's current status
+     *
+     * @return name of character + " - Health: " + health of the character
+     */
+    public String getStatus() {
+        return name + " - Health: " + health;
+    }
+}
 
-<span class="s5">/**</span>
- <span class="s5">* a Villain character in the battle.</span>
- <span class="s5">*/</span>
-<span class="s0">class </span><span class="s1">Villain </span><span class="s2">{</span>
-    <span class="s0">private </span><span class="s1">String name</span><span class="s2">;</span>
-    <span class="s0">private int </span><span class="s1">health</span><span class="s2">;</span>
-    <span class="s0">private int </span><span class="s1">attackPower</span><span class="s2">;</span>
+/**
+ * a Villain character in the battle.
+ */
+class Villain {
+    private String name;
+    private int health;
+    private int attackPower;
 
-    <span class="s5">/** Creates a Villain with a name, health, and attack power</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">name the name of the villain</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">health the health of the villain</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">attackPower the attack power of the villain</span>
-     <span class="s5">*/</span>
-    <span class="s0">public </span><span class="s1">Villain</span><span class="s2">(</span><span class="s1">String name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">health</span><span class="s2">, </span><span class="s0">int </span><span class="s1">attackPower</span><span class="s2">) {</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">name </span><span class="s2">= </span><span class="s1">name</span><span class="s2">;</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">health </span><span class="s2">= </span><span class="s1">health</span><span class="s2">;</span>
-        <span class="s0">this</span><span class="s2">.</span><span class="s1">attackPower </span><span class="s2">= </span><span class="s1">attackPower</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /** Creates a Villain with a name, health, and attack power
+     *
+     * @param name the name of the villain
+     * @param health the health of the villain
+     * @param attackPower the attack power of the villain
+     */
+    public Villain(String name, int health, int attackPower) {
+        this.name = name;
+        this.health = health;
+        this.attackPower = attackPower;
+    }
 
-    <span class="s5">/** returns the name of the character</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">the name</span>
-     <span class="s5">*/</span>
-    <span class="s0">public </span><span class="s1">String getName</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">name</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /** returns the name of the character
+     *
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 
-    <span class="s5">/** returns the attack power of the character</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">the attack power</span>
-     <span class="s5">*/</span>
-    <span class="s0">public int </span><span class="s1">getAttackPower</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">attackPower</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /** returns the attack power of the character
+     *
+     * @return the attack power
+     */
+    public int getAttackPower() {
+        return attackPower;
+    }
 
-    <span class="s5">/** checks if hero is alive</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">true if health &gt; 0 and false if health &lt; 0</span>
-     <span class="s5">*/</span>
-    <span class="s0">public boolean </span><span class="s1">isAlive</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">health </span><span class="s2">&gt; </span><span class="s4">0</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    /** checks if hero is alive
+     *
+     * @return true if health > 0 and false if health < 0
+     */
+    public boolean isAlive() {
+        return health > 0;
+    }
 
-    <span class="s5">/** takes attack amount from hero</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">hero takes hero</span>
-     <span class="s5">*/</span>
-    <span class="s0">public void </span><span class="s1">attack</span><span class="s2">(</span><span class="s1">Hero hero</span><span class="s2">) {</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; attacks &quot; </span><span class="s2">+ </span><span class="s1">hero</span><span class="s2">.</span><span class="s1">getName</span><span class="s2">() + </span><span class="s3">&quot; for &quot; </span><span class="s2">+ </span><span class="s1">attackPower </span><span class="s2">+ </span><span class="s3">&quot; damage!&quot;</span><span class="s2">);</span>
-        <span class="s1">hero</span><span class="s2">.</span><span class="s1">takeDamage</span><span class="s2">(</span><span class="s1">attackPower</span><span class="s2">);</span>
-    <span class="s2">}</span>
+    /** takes attack amount from hero
+     *
+     * @param hero takes hero
+     */
+    public void attack(Hero hero) {
+        System.out.println(name + " attacks " + hero.getName() + " for " + attackPower + " damage!");
+        hero.takeDamage(attackPower);
+    }
 
-    <span class="s5">/** takes damage from attack and subtracts from health</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@param </span><span class="s5">damage the damage from the attack</span>
-     <span class="s5">*/</span>
-    <span class="s0">public void </span><span class="s1">takeDamage</span><span class="s2">(</span><span class="s0">int </span><span class="s1">damage</span><span class="s2">) {</span>
-        <span class="s1">health </span><span class="s2">-= </span><span class="s1">damage</span><span class="s2">;</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; takes &quot; </span><span class="s2">+ </span><span class="s1">damage </span><span class="s2">+ </span><span class="s3">&quot; damage!&quot;</span><span class="s2">);</span>
-    <span class="s2">}</span>
+    /** takes damage from attack and subtracts from health
+     *
+     * @param damage the damage from the attack
+     */
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " takes " + damage + " damage!");
+    }
 
-    <span class="s5">/** Returns the villain's current status</span>
-     <span class="s5">*</span>
-     <span class="s5">* </span><span class="s6">@return </span><span class="s5">string of characters name and &quot; - Health: &quot; and the characters health</span>
-     <span class="s5">*/</span>
-    <span class="s0">public </span><span class="s1">String getStatus</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">name </span><span class="s2">+ </span><span class="s3">&quot; - Health: &quot; </span><span class="s2">+ </span><span class="s1">health</span><span class="s2">;</span>
-    <span class="s2">}</span>
-<span class="s2">}</span>
-</pre>
-</body>
-</html>
+    /** Returns the villain's current status
+     *
+     * @return string of characters name and " - Health: " and the characters health
+     */
+    public String getStatus() {
+        return name + " - Health: " + health;
+    }
+}
